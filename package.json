@@ -1,6 +1,6 @@
 {
   "name": "mern_server",
-  "private":true,
+  "private": true,
   "type": "module",
   "version": "1.0.0",
   "description": "learn MERN Tech",
@@ -13,7 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^2.2.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "mongoose": "^9.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.28.3",
