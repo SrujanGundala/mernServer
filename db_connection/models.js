@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 const user_schema = new Schema({
+  id: { type: Number, unique: true },
   user: String,
   city: String,
 });
