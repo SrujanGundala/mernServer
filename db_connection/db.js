@@ -9,7 +9,7 @@ export async function connectDB() {
     });
     logger.info("Mongoose DB Connected");
   } catch (err) {
-    logger.error("Mongoose connection failed with error:" + err);
+    logger.error("Mongoose connection failed with error: " + err);
   }
 }
 
@@ -23,7 +23,7 @@ export async function ensureConnectionDB() {
       return;
     }
   } catch (error) {
-    logger.error("db connection failed with error" + error);
+    logger.error("db connection failed with error: " + error);
   }
 }
 
@@ -32,6 +32,6 @@ export async function disconnnectDB() {
     await mongoose.disconnect();
     logger.info("Mongoose DB disconnected");
   } catch (err) {
-    logger.error("Mongoose DB disconnection failed with error" + error);
+    logger.error("Mongoose DB disconnection failed with error: " + err);
   }
 }
