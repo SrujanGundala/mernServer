@@ -29,6 +29,24 @@ const sequence_schema = new Schema({
   courseId: Number,
 });
 
+function hideInternalFields(schema) {
+  schema.set("toJSON", {
+    transform: (doc, ret) => {
+      delete ret._id;
+      delete ret.__v;
+      return ret;
+    },
+  });
+  schema.set("toObject", {
+    transform: (doc, ret) => {
+      delete ret._id;
+      delete ret.__v;
+      return ret;
+    },
+  });
+}
+mongoose.plugin(hideInternalFields);
+
 export const userModel = mongoose.model("user", user_schema);
 
 export const courseModel = mongoose.model("course", course_schema);
