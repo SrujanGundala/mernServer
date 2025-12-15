@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
-import { OBJ_CONSTANTS, NUM_CONSTANTS } from "../constants.js";
 import { logger } from "../utils/logger.js";
-
+import config from "config";
 export async function connectDB() {
+  const uri = config.get("db_uri_local");
+  const connectionTimeOut = config.get("db_timeout_limit");
   try {
-    await mongoose.connect(OBJ_CONSTANTS.MONGOOSE_URI, {
-      serverSelectionTimeoutMS: NUM_CONSTANTS.TIMER_LIMIT,
+    await mongoose.connect(uri, {
+      serverSelectionTimeoutMS: connectionTimeOut,
     });
     logger.info("Mongoose DB Connected");
   } catch (err) {

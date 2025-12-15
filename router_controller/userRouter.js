@@ -4,6 +4,8 @@ import { userModel } from "../db_connection/models.js";
 import { ensureConnectionDB } from "../db_connection/db.js";
 import { logger } from "../utils/logger.js";
 import { check, validationResult } from "express-validator";
+import jwt from "jsonwebtoken";
+import config from "config";
 
 const userController = e.Router();
 /**
@@ -28,7 +30,6 @@ userController.get("/:id", async (req, res) => {
   try {
     logger.info("enter:: get user by id");
     await ensureConnectionDB();
-    console.log(seq.userId);
     const user = await userModel.findOne({ id: req.params.id });
     if (!user) {
       res
@@ -73,7 +74,17 @@ userController.post(
           password: hash_password,
         };
         const user = await userModel.create(payload);
-        res.status(201).json({ message: "user saved successfully", user });
+        const request = {
+          user: {
+            id: user.id,
+          },
+        };
+        const token = jwt.sign(request, config.get("jwt_token"), {
+          expiresIn: 720000,
+        });
+        res
+          .status(201)
+          .json({ message: "user saved successfully", user, token: token });
       } else {
         res.status(400).json({ error: "user already exist with email" });
       }
