@@ -6,3 +6,8 @@ export const NUM_CONSTANTS = {
 export const OBJ_CONSTANTS = {
   MONGOOSE_URI: "mongodb://localhost:27017/test",
 };
+
+export const CLUSTER = {
+  user: "srujangundala97_db_user",
+  password: "9EpTSYXImBgQXhH4",
+};

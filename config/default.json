@@ -1,0 +1,6 @@
+{
+    "jwt_token":"jwtsecrettoken",
+    "db_uri_local":"mongodb://localhost:27017/test",
+    "db_timeout_limit":5000,
+    "local_port":8080
+}
