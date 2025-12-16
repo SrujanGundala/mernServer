@@ -35,6 +35,7 @@ export const getUserbyId = async (req, res) => {
         .status(404)
         .json({ error: `No user found on this id: ${req.params.id}` });
     }
+    logger.info("all users: " + user);
     res.send(user);
   } catch (error) {
     logger.error("get user by id failed with error: " + error);
